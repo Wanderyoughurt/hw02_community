@@ -144,3 +144,6 @@ dmypy.json
 .history/
 
 .mypy_cache
+
+# ignore for "static" folder
+/yatube/static/*

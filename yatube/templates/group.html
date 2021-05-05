@@ -1,12 +1,8 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Записи сообщества {{ groups.title }} | Yatube</title>
-  </head>
-  <body>
-    <h1>{{ groups.title }}</h1>
+{% extends "base.html" %}
+{% block title %}Записи сообщества {{ groups.title }}{% endblock %}
+{% block header %}{{ groups.title }}{% endblock %}
+{% block content %}
+
     <p>
         {{ groups.description }}
     </p>
@@ -17,6 +13,5 @@
     <p>{{ post.text|linebreaksbr }}</p>
     <hr>
     {% endfor %}
-    
-  </body>
-</html> 
+
+{% endblock %}
