@@ -145,5 +145,7 @@ dmypy.json
 
 .mypy_cache
 
-# ignore for "static" folder
+# ignore for hw02 folders
 /yatube/static/*
+/yatube/posts/static/*
+/yatube/users/*

@@ -1,3 +1,5 @@
+import datetime as dt
+
 from django.shortcuts import get_object_or_404, render
 
 from .models import Group, Post
@@ -10,5 +12,11 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = group.groups.all()[:12]
+    posts = group.posts.groups.all()[:12]
     return render(request, "group.html", {"groups": group, "posts": posts})
+
+
+def year(request):
+    years = {"year": dt.datetime.today().year}
+    template = "footer.html"
+    return render(request, template, years)
