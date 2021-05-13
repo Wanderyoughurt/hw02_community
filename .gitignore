@@ -148,4 +148,3 @@ dmypy.json
 # ignore for hw02 folders
 /yatube/static/*
 /yatube/posts/static/*
-/yatube/users/*
