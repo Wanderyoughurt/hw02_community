@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Последние обновления автора {{ user.get_full_name }}{% endblock %}
+{% block header %}Последние обновления автора {{ user.get_full_name }}{% endblock %}
+{% block content %}
+    <div class="row">
+      <div class="col-md-3 mb-3 mt-1">
+        <div class="card">
+          <div class="card-body">
+            <div class="h2">
+               {{ user.get_full_name }}
+            </div>
+            <div class="h3 text-muted">
+               @{{user.get_username}}
+             </div>
+           </div>
+            <ul class="list-group list-group-flush">
+             <li class="list-group-item">
+               <div class="h6 text-muted">
+                 Подписчиков: XXX <br />
+                 Подписан: XXX
+                </div>
+             </li>
+             <li class="list-group-item">
+                <div class="h6 text-muted">
+                  <!-- Количество записей -->
+                  Записей: {{post_count}}
+                </div>
+             </li>
+            </ul>
+          </div>
+       </div>
+  
+       <div class="col-md-9">
+        {% for post in page %}
+        <div class="card mb-3 mt-1 shadow-sm">
+            <div class="card-body">
+              <p class="card-text">
+                <!-- Ссылка на страницу автора в атрибуте href; username автора в тексте ссылки -->
+                <a href="/{{ post.author.get_username }}/">
+                 <strong class="d-block text-gray-dark">@{{ post.author.get_username }}</strong>
+                </a>
+                {{ post.text|linebreaksbr }}</p>
+                  <!-- Ссылка на страницу записи в атрибуте href-->
+                  <a class="btn btn-sm text-muted" href="/{{ post.author.get_username }}/37/" role="button">
+                    Добавить комментарий
+                  </a>
+                  <!-- Ссылка на редактирование, показывается только автору записи. 
+                  Эту ссылку вы подключите в финальном задании спринта -->
+                  <a class="btn btn-sm text-muted" href="/{{ post.author.get_username }}/37/edit" role="button">
+                    Редактировать
+                  </a>
+                <small class="text-muted">{{ post.pub_date|date:"d M Y" }}</small>
+              </div>
+            </div>
+          <!-- Конец блока с отдельным постом -->
+          <!-- Остальные посты -->
+        {% endfor %}
+
+        {% include "paginator.html" %}
+       </div>
+
+{% endblock %}
